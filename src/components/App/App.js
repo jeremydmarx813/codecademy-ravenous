@@ -1,26 +1,19 @@
 import React from 'react';
 import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
+import BusinessList from '/Users/jeremydmarx/Codecademy/ravenous/src/components/BusinessList/BusinessList.js';
+import SearchBar from '/Users/jeremydmarx/Codecademy/ravenous/src/components/SearchBar/SearchBar.js';
 
-function App() {
-  return (
+class App extends React.Component {
+  render(){
+     return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <h1>ravenous</h1>
+    <SearchBar />
+    <BusinessList /> 
+  </div>
+    );
+   }
 }
 
 export default App;

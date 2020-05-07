@@ -1,9 +1,12 @@
 import React from 'react';
 import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
-import BusinessList from '/Users/jeremydmarx/Codecademy/ravenous/src/components/BusinessList/BusinessList.js';
-import SearchBar from '/Users/jeremydmarx/Codecademy/ravenous/src/components/SearchBar/SearchBar.js';
-import Yelp from '/Users/jeremydmarx/Codecademy/ravenous/src/util/Yelp.js';
+import BusinessList from '../BusinessList/BusinessList';
+import SearchBar from '../SearchBar/SearchBar';
+import Yelp from '../../util/Yelp';
+
+//ADD REACT ROUTER SO EACH BUSINESS CAN HAVE ITS OWN PAGE
+
 
 /*
 HARDCODED Business info

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Business.css';
 
-
+//!!Add delete button to each business
 
 class Business extends React.Component {
     render() {

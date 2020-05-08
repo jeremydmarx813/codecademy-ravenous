@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
-
-
+// import { Link } from 'react-router-dom';
+import HomeButton from '../HomeButton/HomeButton';
 
 class SearchBar extends React.Component {
    constructor(props){
@@ -47,10 +47,13 @@ class SearchBar extends React.Component {
       } else {
         console.log('%cNeed Input to Search Bar', 'color:red;background-color:white;font-size:25px;padding:5px');
       }
-      // this.setState({
-      //     term: '',
-      //     location: ''
-      // });
+    }
+
+    resetSearch = () => {
+       this.setState({
+              term: '',
+              location: ''
+          });
     }
 
     renderSortByOptions = () => {
@@ -58,10 +61,11 @@ class SearchBar extends React.Component {
             let sortByOptionValue = this.sortByOptions[option];
         return (
                 <React.Fragment>
+                 
                 <li key={sortByOptionValue} 
                    className={this.getSortByClass(sortByOptionValue)} 
                    onClick={() => {
-                           console.log('%cFROM THE LIST ITEMS IN SEARCHBAR.js renderSortByOpts func', 'color:red;font-size:20px;background-color:green');
+                          //  console.log('%cFROM THE LIST ITEMS IN SEARCHBAR.js renderSortByOpts func', 'color:red;font-size:20px;background-color:green');
                           if(this.state.term.length && this.state.location.length){
                             this.handleSortByChange.call(this, sortByOptionValue);
                             this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
@@ -79,7 +83,10 @@ class SearchBar extends React.Component {
 
     render(){
         return (
+           <React.Fragment>
+             <HomeButton resetSearch={this.resetSearch} clearSearch={this.props.clearSearch}/>
             <div className="SearchBar">
+               
             <div className="SearchBar-sort-options">
               <ul>
                 {this.renderSortByOptions()}
@@ -93,6 +100,7 @@ class SearchBar extends React.Component {
               <button onClick={this.handleSearch}>Let's Go</button>
             </div>
           </div>
+          </React.Fragment>
         );
     }
 }

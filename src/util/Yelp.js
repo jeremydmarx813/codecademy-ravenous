@@ -10,6 +10,7 @@ const Yelp = {
       }).then(response => {
           return response.json();
       }).then(jsonResponse => {
+         console.log(jsonResponse);
           if(jsonResponse.businesses){
             return jsonResponse.businesses.map(business => {
                 return {
@@ -26,7 +27,7 @@ const Yelp = {
                  };
             });
           }
-      });
+      }, console.log);
     }
 };
 

@@ -6,9 +6,15 @@ import { Link } from 'react-router-dom'
 //!!Add delete button to each business
 
 class Business extends React.Component {
+    constructor(props){
+       super(props);
+       this.state = {
+          businessData: this.props.business
+       };
+    }
     render() {
       return (
-        <Link to="individual-business">
+        <Link   to={{pathname: "individual-business", state: this.state.businessData}} >
         <div className="Business">
         <div className="image-container">
           <img src={this.props.business.imageSrc} alt=''/>

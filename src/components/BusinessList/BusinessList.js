@@ -17,7 +17,7 @@ class BusinessList extends React.Component {
     const apiNo = (
         <div className="BusinessList">
           <div className="Business">
-            <h2>We aint got No search results!</h2>
+            <h2>We aint got No search results! Either you didn't search or yelp! said No!</h2>
          </div>
         </div>
     );

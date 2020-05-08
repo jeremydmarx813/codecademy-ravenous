@@ -1,11 +1,14 @@
 import React from 'react';
 import './Business.css';
+import { Link } from 'react-router-dom'
+
 
 //!!Add delete button to each business
 
 class Business extends React.Component {
     render() {
       return (
+        <Link to="individual-business">
         <div className="Business">
         <div className="image-container">
           <img src={this.props.business.imageSrc} alt=''/>
@@ -24,6 +27,7 @@ class Business extends React.Component {
           </div>
         </div>
       </div>  
+      </Link>
       )
     }
   }

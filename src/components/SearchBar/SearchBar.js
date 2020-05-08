@@ -8,12 +8,9 @@ class SearchBar extends React.Component {
      super(props);
      this.state = {
        term: '',
-       locations: '',
+       location: '',
        sortBy: 'best_match'
      };
-     this.handleTermChange = this.handleTermChange.bind(this);
-     this.handleLocationChange = this.handleLocationChange.bind(this);
-     this.handleSearch = this.handleSearch.bind(this);
      this.sortByOptions = {
       'Best Match': 'best_match',
       'Highest Rated': 'rating',
@@ -35,31 +32,45 @@ class SearchBar extends React.Component {
       });
     }
 
-    handleTermChange(event){
+    handleSearchTermChange = event =>{
       this.setState({
-        term: event.target.value
+        [event.target.name]: event.target.value
       });
     }
 
-    handleLocationChange(event){
-      this.setState({
-        location: event.target.value
-      });
-    }
      
-    handleSearch(event){
-      this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-      event.preventDefault();
+    handleSearch = event => {
+      if(this.state.term.length && this.state.location.length){
+
+        event.preventDefault();
+        this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+      } else {
+        console.log('%cNeed Input to Search Bar', 'color:red;background-color:white;font-size:25px;padding:5px');
+      }
+      // this.setState({
+      //     term: '',
+      //     location: ''
+      // });
     }
 
-    renderSortByOptions(){
+    renderSortByOptions = () => {
         return Object.keys(this.sortByOptions).map(option => {
             let sortByOptionValue = this.sortByOptions[option];
         return (
                 <React.Fragment>
                 <li key={sortByOptionValue} 
                    className={this.getSortByClass(sortByOptionValue)} 
-                   onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
+                   onClick={() => {
+                           console.log('%cFROM THE LIST ITEMS IN SEARCHBAR.js renderSortByOpts func', 'color:red;font-size:20px;background-color:green');
+                          if(this.state.term.length && this.state.location.length){
+                            this.handleSortByChange.call(this, sortByOptionValue);
+                            this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+                          } else {
+
+                            this.handleSortByChange.call(this, sortByOptionValue);  
+                          }
+                        } 
+                      }>
                      {option} </li>
                   </React.Fragment>
                      );
@@ -75,11 +86,11 @@ class SearchBar extends React.Component {
               </ul>
             </div>
             <div className="SearchBar-fields">
-              <input onChange={this.handleTermChange} placeholder="Search Businesses" />
-              <input onChange={this.handleLocationChange} placeholder="Where?" />
+              <input onChange={this.handleSearchTermChange} placeholder="Search Businesses" name="term" value={this.state.term}/>
+              <input onChange={this.handleSearchTermChange} placeholder="Where?" name="location" value={this.state.location} />
             </div>
             <div className="SearchBar-submit">
-              <a onClick={this.handleSearch}>Let's Go</a>
+              <button onClick={this.handleSearch}>Let's Go</button>
             </div>
           </div>
         );

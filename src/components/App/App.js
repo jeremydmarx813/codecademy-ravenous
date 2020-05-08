@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
 import Yelp from '../../util/Yelp';
+import IndvBusiness from '../IndvBusiness/IndvBusiness';
 
 //ADD REACT ROUTER SO EACH BUSINESS CAN HAVE ITS OWN PAGE
 
@@ -45,11 +47,22 @@ constructor(props){
 
   render(){
      return (
-    <div className="App">
-    <h1>ravenous</h1>
-    <SearchBar searchYelp={this.searchYelp} />
-    <BusinessList businesses={this.state.businesses}/> 
-  </div>
+    <Router>
+      <div className="App">
+        <Link to="/">
+           <h1>ravenous</h1>
+         </Link>
+         <SearchBar searchYelp={this.searchYelp} />
+         <Route exact path="/">
+           <BusinessList businesses={this.state.businesses}/> 
+         </Route>
+         <Route path="/individual-business">
+           <IndvBusiness />
+         </Route>
+         
+
+      </div>
+    </Router>
     );
    }
 }

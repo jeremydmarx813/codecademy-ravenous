@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
     };
    }
     
-    getSortByClass(sortByOption){
+    getSortByClass = sortByOption => {
       if(this.state.sortBy === sortByOption){
         return 'active';
       } else {
@@ -26,11 +26,6 @@ class SearchBar extends React.Component {
       }
     }
 
-    handleSortByChange(sortByOption){
-      this.setState({
-        sortBy: sortByOption
-      });
-    }
 
     handleSearchTermChange = event =>{
       this.setState({
@@ -63,18 +58,9 @@ class SearchBar extends React.Component {
                 <React.Fragment>
                  
                 <li key={sortByOptionValue} 
+                    name={sortByOptionValue}
                    className={this.getSortByClass(sortByOptionValue)} 
-                   onClick={() => {
-                          //  console.log('%cFROM THE LIST ITEMS IN SEARCHBAR.js renderSortByOpts func', 'color:red;font-size:20px;background-color:green');
-                          if(this.state.term.length && this.state.location.length){
-                            this.handleSortByChange.call(this, sortByOptionValue);
-                            this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-                          } else {
-
-                            this.handleSortByChange.call(this, sortByOptionValue);  
-                          }
-                        } 
-                      }>
+                   onClick={this.handleSearchTermChange.bind(this, sortByOptionValue)}>
                      {option} </li>
                   </React.Fragment>
                      );

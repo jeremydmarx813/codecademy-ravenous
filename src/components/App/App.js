@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { RavComponent } from '../../RavState';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
-import Yelp from '../../util/Yelp';
+// import Yelp from '../../util/Yelp';
 import IndvBusiness from '../IndvBusiness/IndvBusiness';
 import HomeButton from '../HomeButton/HomeButton';
 
@@ -47,12 +47,12 @@ class App extends React.Component {
 						<div className="App">
 							<HomeButton />
 							<SearchBar />
-							{/* <Route exact path="/">
+							<Route exact path="/">
 								<BusinessList />
 							</Route>
 							<Route path="/individual-business">
 								<IndvBusiness />
-							</Route> */}
+							</Route>
 						</div>
 					</Router>
 				)}

@@ -5,7 +5,7 @@ import { RavConsumer } from '../../RavState';
 
 //!!NEEDS resetSearch and clearSearch
 
-const HomeButton = (props) => {
+const HomeButton = props => {
 	return (
 		<RavConsumer>
 			{({resetSearch}) => (

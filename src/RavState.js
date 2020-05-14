@@ -48,7 +48,6 @@ export class RavComponent extends React.Component {
 	};
 
 	searchYelp = (term, location, sortBy) => {
-		//  console.log(`Search Yelp with ${term}, ${location}, ${sortBy}.`);
 		Yelp.search(term, location, sortBy).then((businesses) => {
 			this.setState({
 				businesses : businesses
@@ -79,15 +78,11 @@ export class RavComponent extends React.Component {
 				</React.Fragment>
 			);
 		});
-    };
-    
-    render(){
-        return (
-            <RavContext value={this.state}>
-                {this.props.children}
-            </RavContext>
-        )
-    }
+	};
+
+	render() {
+		return <RavContext value={this.state}>{this.props.children}</RavContext>;
+	}
 }
 
 export const RavConsumer = RavContext.Consumer;

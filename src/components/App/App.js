@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { RavComponent } from '../../RavState';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
 import Yelp from '../../util/Yelp';
@@ -18,47 +19,46 @@ Allow you to search by pressing “Enter” (or “Return”) on your keyboard, 
 Add autocompletion of addresses to the “Location” input
 */
 
-
 class App extends React.Component {
-constructor(){
-  super();
-  this.state = {
-    businesses: []
-  };
-}
+	constructor() {
+		super();
+	}
 
- searchYelp = (term, location, sortBy) => {
-  //  console.log(`Search Yelp with ${term}, ${location}, ${sortBy}.`);
-  Yelp.search(term, location, sortBy).then(businesses => {
-    this.setState({
-      businesses: businesses
-    });
-  });
- }
+	// searchYelp = (term, location, sortBy) => {
+	// 	//  console.log(`Search Yelp with ${term}, ${location}, ${sortBy}.`);
+	// 	Yelp.search(term, location, sortBy).then((businesses) => {
+	// 		this.setState({
+	// 			businesses : businesses
+	// 		});
+	// 	});
+	// }
 
-clearSearch = () => {
-  this.setState({
-    businesses: []
-  });
-}
+	// clearSearch = () => {
+	// 	this.setState({
+	// 		businesses : []
+	// 	});
+	// };
 
-  render(){
-     return (
-    <Router>
-      <div className="App">
-         <SearchBar searchYelp={this.searchYelp} clearSearch={this.clearSearch}/>
-         <Route exact path="/">
-           <BusinessList businesses={this.state.businesses}/> 
-         </Route>
-         <Route path="/individual-business">
-           <IndvBusiness />
-         </Route>
-         
-
-      </div>
-    </Router>
-    );
-   }
+	render() {
+		return (
+			<RavComponent>
+				{() => (
+					<Router>
+						<div className="App">
+							<HomeButton />
+							<SearchBar />
+							{/* <Route exact path="/">
+								<BusinessList />
+							</Route>
+							<Route path="/individual-business">
+								<IndvBusiness />
+							</Route> */}
+						</div>
+					</Router>
+				)}
+			</RavComponent>
+		);
+	}
 }
 
 export default App;

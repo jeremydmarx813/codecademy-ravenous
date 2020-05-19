@@ -33,7 +33,7 @@ export class RavComponent extends React.Component {
 	};
 
 	handleSearchTermChange = (event) => {
-		console.log(event.target);
+		// console.log(event.target);
 		this.setState({
 			[event.target.name]: event.target.value
 		});

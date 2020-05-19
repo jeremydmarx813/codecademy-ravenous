@@ -1,29 +1,27 @@
 import React from 'react';
 import Yelp from './util/Yelp';
 
-const RavContext = React.createContext({
-	businesses : [],
-	term       : '',
-	location   : '',
-	sortBy     : ''
-});
+const RavContext = React.createContext();
 
 export class RavComponent extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			businesses : [],
-			term       : '',
-			location   : '',
-			sortBy     : 'best_match'
-		};
-		this.sortByOptions = {
-			'Best Match'    : 'best_match',
-			'Highest Rated' : 'rating',
-			'Most Reviewed' : 'review_count'
+			businesses             : [],
+			term                   : '',
+			location               : '',
+			sortBy                 : 'best_match',
+			renderSortByOptions    : this.renderSortByOptions,
+			handleSearchTermChange : this.handleSearchTermChange,
+			resetSearch            : this.resetSearch
 		};
 	}
 
+	sortByOptions = {
+		'Best Match'    : 'best_match',
+		'Highest Rated' : 'rating',
+		'Most Reviewed' : 'review_count'
+	};
 	getSortByClass = (sortByOption) => {
 		if (this.state.sortBy === sortByOption) {
 			return 'active';
@@ -81,7 +79,7 @@ export class RavComponent extends React.Component {
 	};
 
 	render() {
-		return <RavContext value={this.state}>{this.props.children}</RavContext>;
+		return <RavContext.Provider value={this.state}>{this.props.children}</RavContext.Provider>;
 	}
 }
 

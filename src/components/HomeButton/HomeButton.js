@@ -11,10 +11,7 @@ const HomeButton = props => {
 			{({resetSearch}) => (
 				<Link to="/">
 					<h1
-						onClick={() => {
-							// this.props.resetSearch();
-							// this.props.clearSearch();
-						}}
+						onClick={resetSearch}
 					>
 						ravenous
 					</h1>

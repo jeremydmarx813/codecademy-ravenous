@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { RavComponent } from '../../RavState';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
@@ -42,20 +42,17 @@ class App extends React.Component {
 	render() {
 		return (
 			<RavComponent>
-				{() => (
-					<Router>
-						<div className="App">
-							<HomeButton />
-							<SearchBar />
-							<Route exact path="/">
-								<BusinessList />
-							</Route>
-							<Route path="/individual-business">
-								<IndvBusiness />
-							</Route>
-						</div>
-					</Router>
-				)}
+				<Router>
+					<div className="App">
+						<HomeButton />
+						<SearchBar />
+						<Switch>
+							<Route exact path="/" component={BusinessList} />
+
+							<Route path="/individual-business/:id" component={IndvBusiness} />
+						</Switch>
+					</div>
+				</Router>
 			</RavComponent>
 		);
 	}

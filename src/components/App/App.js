@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RavComponent } from '../../RavState';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
@@ -19,43 +19,21 @@ Allow you to search by pressing “Enter” (or “Return”) on your keyboard, 
 Add autocompletion of addresses to the “Location” input
 */
 
-class App extends React.Component {
-	constructor() {
-		super();
-	}
-
-	// searchYelp = (term, location, sortBy) => {
-	// 	//  console.log(`Search Yelp with ${term}, ${location}, ${sortBy}.`);
-	// 	Yelp.search(term, location, sortBy).then((businesses) => {
-	// 		this.setState({
-	// 			businesses : businesses
-	// 		});
-	// 	});
-	// }
-
-	// clearSearch = () => {
-	// 	this.setState({
-	// 		businesses : []
-	// 	});
-	// };
-
-	render() {
-		return (
-			<RavComponent>
-				<Router>
-					<div className="App">
-						<HomeButton />
-						<SearchBar />
-						<Switch>
-							<Route exact path="/" component={BusinessList} />
-
-							<Route path="/individual-business/:id" component={IndvBusiness} />
-						</Switch>
-					</div>
-				</Router>
-			</RavComponent>
-		);
-	}
-}
+const App = () => {
+	return (
+		<RavComponent>
+			<Router>
+				<div className="App">
+					<HomeButton />
+					<SearchBar />
+					<Switch>
+						<Route exact path="/" component={BusinessList} />
+						<Route path="/individual-business/:id" component={IndvBusiness} />
+					</Switch>
+				</div>
+			</Router>
+		</RavComponent>
+	);
+};
 
 export default App;

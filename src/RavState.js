@@ -13,6 +13,7 @@ export class RavComponent extends React.Component {
 			sortBy                 : 'best_match',
 			renderSortByOptions    : this.renderSortByOptions,
 			handleSearchTermChange : this.handleSearchTermChange,
+			handleSearch           : this.handleSearch,
 			resetSearch            : this.resetSearch
 		};
 	}
@@ -22,6 +23,7 @@ export class RavComponent extends React.Component {
 		'Highest Rated' : 'rating',
 		'Most Reviewed' : 'review_count'
 	};
+
 	getSortByClass = (sortByOption) => {
 		if (this.state.sortBy === sortByOption) {
 			return 'active';
@@ -31,6 +33,7 @@ export class RavComponent extends React.Component {
 	};
 
 	handleSearchTermChange = (event) => {
+		console.log(event.target);
 		this.setState({
 			[event.target.name]: event.target.value
 		});
@@ -39,7 +42,7 @@ export class RavComponent extends React.Component {
 	handleSearch = (event) => {
 		if (this.state.term.length && this.state.location.length) {
 			event.preventDefault();
-			this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+			this.searchYelp(this.state.term, this.state.location, this.state.sortBy);
 		} else {
 			console.log('%cNeed Input to Search Bar', 'color:red;background-color:white;font-size:25px;padding:5px');
 		}
@@ -55,21 +58,25 @@ export class RavComponent extends React.Component {
 
 	resetSearch = () => {
 		this.setState({
-			term     : '',
-			location : ''
+			term       : '',
+			location   : '',
+			businesses : [],
+			sortBy     : 'best_match'
 		});
 	};
 
 	renderSortByOptions = () => {
-		return Object.keys(this.sortByOptions).map((option) => {
+		return Object.keys(this.sortByOptions).map((option, i) => {
 			let sortByOptionValue = this.sortByOptions[option];
+
 			return (
-				<React.Fragment>
+				<React.Fragment key={i}>
 					<li
-						key={sortByOptionValue}
-						name={sortByOptionValue}
+						key={i}
+						name="sortBy"
+						value={sortByOptionValue}
 						className={this.getSortByClass(sortByOptionValue)}
-						onClick={this.handleSearchTermChange.bind(this, sortByOptionValue)}
+						onClick={this.handleSearchTermChange}
 					>
 						{option}{' '}
 					</li>

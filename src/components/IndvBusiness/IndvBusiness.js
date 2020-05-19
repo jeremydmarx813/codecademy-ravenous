@@ -1,34 +1,41 @@
 import React from 'react';
 import './IndvBusiness.css';
-import PropTypes from 'prop-types';
-import { withRouter } from "react-router";
-
-
+import Yelp from '../../util/Yelp';
 
 class IndvBusiness extends React.Component {
-    constructor(props){
-        super(props);
-        
-    }
+	constructor(props) {
+		super(props);
+		this.state = this.props.location.state;
+  }
+  
+  componentDidMount(){
+     this.setState({
+       reviews: Yelp.getReviews(this.state.id)
+     })
+  }
+
+	render() {
+		const { address, alias, category, city, imageSrc, name, phone, rating, state, zipCode, id } = this.state;
     
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired
-      };
+		return (
+			<div className="BusinessList">
+				<div className="Business">
+					<h1>{name}</h1>
+					<img src={imageSrc} />
+					<div className="Business-address">
+						<h3>{address}</h3>
+						<div>
+							<h5>{city}</h5>
+							<h5>{state}</h5>
+						</div>
+						<h5>{zipCode}</h5>
+            <h5>{phone}</h5>
+					</div>
 
-    render() {
-        const { match, location, history } = this.props;
-        
-        return (
-                <div className="BusinessList">
-                  <h1 style={{textAlign: 'center'}}>Test</h1>
-                </div>
-        )
-    }
+				</div>
+			</div>
+		);
+	}
 }
-
-const ShowTheLocationWithRouter = withRouter(IndvBusiness);
-
 
 export default IndvBusiness;

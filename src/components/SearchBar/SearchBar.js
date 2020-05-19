@@ -10,7 +10,7 @@ const SearchBar = props => {
 			{({ renderSortByOptions, handleSearchTermChange, handleSearch, term, location }) => (
 				<div className="SearchBar">
 					<div className="SearchBar-sort-options">
-						<ul>{renderSortByOptions}</ul>
+						<ul>{renderSortByOptions()}</ul>
 					</div>
 					<div className="SearchBar-fields">
 						<input

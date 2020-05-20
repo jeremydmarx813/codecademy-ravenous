@@ -48,8 +48,14 @@ const Yelp = {
       return jsonResponse.json();
     })
     .then(response => {
-      console.log(response.reviews)
-       return response.reviews;
+      // console.log(response.reviews)
+       return response.reviews.map(r => {
+         return {
+           reviewRating: r.rating,
+           reviewText: r.text,
+           reviewUserName: r.user.name
+         }
+       });
       })
     .catch(err => console.log(err))
     }

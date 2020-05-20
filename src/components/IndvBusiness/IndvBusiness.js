@@ -9,13 +9,15 @@ class IndvBusiness extends React.Component {
 	}
 
 	componentDidMount() {
-		this.setState({
-			reviews : Yelp.getReviews(this.state.id)
+		Yelp.getReviews(this.state.id).then((val) => {
+			this.setState({
+				reviews : val
+			});
 		});
 	}
 
 	render() {
-		const { address, category, city, imageSrc, name, phone, rating, state, zipCode } = this.state;
+		const { address, category, city, imageSrc, name, phone, rating, state, zipCode, reviews } = this.state;
 
 		return (
 			<div className="BusinessList">
@@ -34,6 +36,17 @@ class IndvBusiness extends React.Component {
 						<h5>{zipCode}</h5>
 					</div>
 					<h5>{phone}</h5>
+					<div style={{ textAlign: 'center' }}>
+						{this.state.reviews.map((r, i) => {
+							return (
+								<div key={i}>
+									<h3>Rating: {r.reviewRating}</h3>
+									<p>{r.reviewText}</p>
+									<h3>{r.reviewUserName}</h3>
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		);

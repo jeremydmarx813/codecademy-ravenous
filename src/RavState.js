@@ -33,7 +33,6 @@ export class RavComponent extends React.Component {
 	};
 
 	handleSearchTermChange = (event) => {
-		console.log(event.target);
 		this.setState({
 			[event.target.name]: event.target.value
 		});
@@ -65,10 +64,9 @@ export class RavComponent extends React.Component {
 		});
 	};
 
-	testFunc = e => {
+	listItemHandleChange = e => {
 		const propToSet = e.target.getAttribute("name");
 		const valToSet = e.target.getAttribute("value");
-		console.log(propToSet, valToSet);
 		this.setState({
 			[propToSet] : valToSet
 		})
@@ -85,7 +83,7 @@ export class RavComponent extends React.Component {
 						name="sortBy"
 						value={sortByOptionValue}
 						className={this.getSortByClass(sortByOptionValue)}
-						onClick={this.testFunc}
+						onClick={this.listItemHandleChange}
 					>
 						{option}{' '}
 					</li>

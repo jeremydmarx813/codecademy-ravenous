@@ -1,8 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
-// import { Link } from 'react-router-dom';
 import { RavConsumer } from '../../RavState';
-import HomeButton from '../HomeButton/HomeButton';
+
 
 const SearchBar = props => {
 	return (

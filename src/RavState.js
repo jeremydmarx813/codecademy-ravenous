@@ -33,7 +33,7 @@ export class RavComponent extends React.Component {
 	};
 
 	handleSearchTermChange = (event) => {
-		// console.log(event.target);
+		console.log(event.target);
 		this.setState({
 			[event.target.name]: event.target.value
 		});
@@ -65,6 +65,15 @@ export class RavComponent extends React.Component {
 		});
 	};
 
+	testFunc = e => {
+		const propToSet = e.target.getAttribute("name");
+		const valToSet = e.target.getAttribute("value");
+		console.log(propToSet, valToSet);
+		this.setState({
+			[propToSet] : valToSet
+		})
+	}
+
 	renderSortByOptions = () => {
 		return Object.keys(this.sortByOptions).map((option, i) => {
 			let sortByOptionValue = this.sortByOptions[option];
@@ -76,7 +85,7 @@ export class RavComponent extends React.Component {
 						name="sortBy"
 						value={sortByOptionValue}
 						className={this.getSortByClass(sortByOptionValue)}
-						onClick={this.handleSearchTermChange}
+						onClick={this.testFunc}
 					>
 						{option}{' '}
 					</li>

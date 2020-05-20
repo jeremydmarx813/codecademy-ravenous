@@ -1,6 +1,7 @@
 import React from 'react';
 import './IndvBusiness.css';
 import Yelp from '../../util/Yelp';
+import Spinner from './Spinner';
 
 class IndvBusiness extends React.Component {
 	constructor(props) {
@@ -56,7 +57,7 @@ class IndvBusiness extends React.Component {
 		} else {
 			return (
 				<React.Fragment>
-					<h1>Test</h1>
+					<Spinner />
 				</React.Fragment>
 			);
 		}

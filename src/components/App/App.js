@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from '/Users/jeremydmarx/Codecademy/ravenous/src/logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RavComponent } from '../../RavState';
 import BusinessList from '../BusinessList/BusinessList';
 import SearchBar from '../SearchBar/SearchBar';
-// import Yelp from '../../util/Yelp';
 import IndvBusiness from '../IndvBusiness/IndvBusiness';
 import HomeButton from '../HomeButton/HomeButton';
 

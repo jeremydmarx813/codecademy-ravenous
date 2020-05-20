@@ -18,38 +18,48 @@ class IndvBusiness extends React.Component {
 
 	render() {
 		const { address, category, city, imageSrc, name, phone, rating, state, zipCode, reviews } = this.state;
-
-		return (
-			<div className="BusinessList">
-				<div className="Business">
-					<h1>{name}</h1>
-					<div className="image-container">
-						<img src={imageSrc} />
-					</div>
-					<div className="Business-address">
-						<div>
-							<h3>{address}</h3>
-							<h5>
-								{city}, {state}
-							</h5>
+		if (reviews) {
+			return (
+				<div className="BusinessList">
+					<div className="Business">
+						<h1>{name}</h1>
+						<div className="image-container">
+							<img src={imageSrc} alt="business display"/>
 						</div>
-						<h5>{zipCode}</h5>
-					</div>
-					<h5>{phone}</h5>
-					<div style={{ textAlign: 'center' }}>
-						{this.state.reviews.map((r, i) => {
-							return (
-								<div key={i}>
-									<h3>Rating: {r.reviewRating}</h3>
-									<p>{r.reviewText}</p>
-									<h3>{r.reviewUserName}</h3>
-								</div>
-							);
-						})}
+						<h3>{category}</h3>
+						<h3>Rating: {rating}</h3>
+						<div className="Business-address">
+							<div>
+								<h3>{address}</h3>
+								<h5>
+									{city}, {state}
+								</h5>
+							</div>
+							<h5>{zipCode}</h5>
+						</div>
+						<h5>{phone}</h5>
+						<div style={{ textAlign: 'center' }}>
+							<h1>Reviews</h1>
+							{this.state.reviews.map((r, i) => {
+								return (
+									<div style={{ border: '1px black solid', padding: '2rem' }} key={i}>
+										<h3>Rating: {r.reviewRating}</h3>
+										<p>{r.reviewText}</p>
+										<h3>{r.reviewUserName}</h3>
+									</div>
+								);
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		} else {
+			return (
+				<React.Fragment>
+					<h1>Test</h1>
+				</React.Fragment>
+			);
+		}
 	}
 }
 

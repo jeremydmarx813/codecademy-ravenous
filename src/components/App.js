@@ -1,15 +1,14 @@
 import React from 'react';
-import './App.css';
+import '../visual_aids/App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { RavComponent } from '../../RavState';
-import BusinessList from '../BusinessList/BusinessList';
-import SearchBar from '../SearchBar/SearchBar';
-import IndvBusiness from '../IndvBusiness/IndvBusiness';
-import HomeButton from '../HomeButton/HomeButton';
+import { RavComponent } from '../RavState';
+import BusinessList from '../components/BusinessList';
+import SearchBar from '../components/SearchBar';
+import IndvBusiness from '../components/IndvBusiness';
+import HomeButton from '../components/HomeButton';
 
 /*
 Codecademy suggestions
-Make addresses clickable and have them open the address in Google Maps in a new tab
 Make images clickable and have them open the business’ website in a new tab
 Clicking on a different sorting option automatically requeries the Yelp API, rather than having to manually click “Let’s Go” again
 Implement your own type of sort (for example, by entering a distance or radius from a central location)

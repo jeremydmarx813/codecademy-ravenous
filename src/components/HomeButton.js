@@ -1,20 +1,15 @@
 import React from 'react';
-import './HomeButton.css';
 import { Link } from 'react-router-dom';
-import { RavConsumer } from '../../RavState';
+import { RavConsumer } from '../RavState';
 
 //!!NEEDS resetSearch and clearSearch
 
-const HomeButton = props => {
+const HomeButton = (props) => {
 	return (
 		<RavConsumer>
-			{({resetSearch}) => (
+			{({ resetSearch }) => (
 				<Link to="/">
-					<h1
-						onClick={resetSearch}
-					>
-						ravenous
-					</h1>
+					<h1 onClick={resetSearch}>ravenous</h1>
 				</Link>
 			)}
 		</RavConsumer>

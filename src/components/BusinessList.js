@@ -1,7 +1,6 @@
 import React from 'react';
-import './BusinessList.css';
-import { RavConsumer } from '../../RavState';
-import Business from '../Business/Business';
+import { RavConsumer } from '../RavState';
+import Business from './Business';
 
 const BusinessList = (props) => {
 	return (

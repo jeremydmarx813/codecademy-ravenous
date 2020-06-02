@@ -1,6 +1,5 @@
 import React from 'react';
-import './IndvBusiness.css';
-import Yelp from '../../util/Yelp';
+import Yelp from '../util/Yelp';
 import Spinner from './Spinner';
 
 class IndvBusiness extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
-import './SearchBar.css';
-import { RavConsumer } from '../../RavState';
+// import './SearchBar.css';
+import { RavConsumer } from '../RavState';
 
 
 const SearchBar = props => {

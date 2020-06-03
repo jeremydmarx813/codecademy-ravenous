@@ -238,6 +238,13 @@ h1 {
 	line-height: 1rem;
 }
 
+/* Review  */
+
+.reviewText {
+	width: 25rem;
+	text-align: center;
+}
+
 /* Media query  */
 
 @media only screen and (max-width: 560px) {

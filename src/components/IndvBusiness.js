@@ -22,35 +22,41 @@ class IndvBusiness extends React.Component {
 
 		if (reviews) {
 			return (
-				<div >
+				<div>
 					<div>
 						<h1>{name}</h1>
 						<div className="image-container">
 							<img src={imageSrc} alt="business display" />
 						</div>
-						<h3>{category}</h3>
-						<h3>Rating: {rating}</h3>
-						<div className="Business-address">
-							<div>
-								<h3>{address}</h3>
+						<div>
+							<h3>{category}</h3>
+							<h3>Rating: {rating}</h3>
+							<div className="Business-address">
+								<div>
+									<h3>{address}</h3>
+									<h5>
+										{city}, {state}
+									</h5>
+								</div>
+								<h5>{zipCode}</h5>
 								<h5>
-									{city}, {state}
+									<a
+										href={`https://www.google.com/maps/search/?api=1&query=${parsedBusStr}`}
+										target="_blank"
+									>
+										Google Maps
+									</a>
 								</h5>
 							</div>
-							<h5>{zipCode}</h5>
-							<h5>
-								<a href={`https://www.google.com/maps/search/?api=1&query=${parsedBusStr}`} target="_blank">Google Maps</a>
-							</h5>
-							<div>{console.log(parsedBusStr)}</div>
+							<h5>{phone}</h5>
 						</div>
-						<h5>{phone}</h5>
 						<div style={{ textAlign: 'center' }}>
 							<h1>Reviews</h1>
 							{this.state.reviews.map((r, i) => {
 								return (
 									<div style={{ border: '1px black solid', padding: '2rem' }} key={i}>
 										<h3>Rating: {r.reviewRating}</h3>
-										<p>{r.reviewText}</p>
+										<p className="reviewText">{r.reviewText}</p>
 										<h3>{r.reviewUserName}</h3>
 									</div>
 								);

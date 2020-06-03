@@ -8,9 +8,11 @@ const HomeButton = (props) => {
 	return (
 		<RavConsumer>
 			{({ resetSearch }) => (
-				<Link to="/">
-					<h1 onClick={resetSearch}>ravenous</h1>
-				</Link>
+				<div className="headerDiv"> 
+					<Link to="/">
+						<h1 onClick={resetSearch}>ravenous</h1>
+					</Link>
+				</div>
 			)}
 		</RavConsumer>
 	);

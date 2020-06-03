@@ -22,8 +22,8 @@ class IndvBusiness extends React.Component {
 
 		if (reviews) {
 			return (
-				<div className="BusinessList">
-					<div className="Business">
+				<div >
+					<div>
 						<h1>{name}</h1>
 						<div className="image-container">
 							<img src={imageSrc} alt="business display" />

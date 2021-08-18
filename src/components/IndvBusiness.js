@@ -43,6 +43,7 @@ class IndvBusiness extends React.Component {
 									<a
 										href={`https://www.google.com/maps/search/?api=1&query=${parsedBusStr}`}
 										target="_blank"
+										rel="noopener noreferrer"
 									>
 										Google Maps
 									</a>
